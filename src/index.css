@@ -50,3 +50,14 @@ img {
 .checked {
   color: orange;
 }
+.addMovieForm{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.updateMovieForm{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
