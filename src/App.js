@@ -49,7 +49,6 @@ class App extends Component {
     this.setState({
       movies:[json]
     })
-    console.log(this.state.movies)
   }
   movieModal2 = (e) => {
     this.setState({
@@ -77,14 +76,12 @@ class App extends Component {
     this.setState({updateMovieYear: e.target.value})
   }
   onChangeUpdateMovieRating(e){
-    console.log(e.target.value)
     this.setState({updateMovieRating: e.target.value})
   }
   onChangeUpdateMoviePoster(e){
     this.setState({updateMoviePoster: e.target.value})
   }
   onChangeAddMovieTitle(e){
-    console.log(e.target.value)
     this.setState({newMovieTitle: e.target.value})
   }
   onChangeAddMovieDirector(e){
@@ -100,22 +97,27 @@ class App extends Component {
     this.setState({newMoviePoster: e.target.value})
   }
   postMovie() {
-    console.log("here")
-    console.log(this.state)
-    // fetch('https://g4-12-6-18g.herokuapp.com/data', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     title: this.state.newMovieTitle,
-    //     director: this.state.newMovieDirector,
-    //     year: this.state.newMovieYear,
-    //     rating: this.state.newMovieRating,
-    //     poster_url: this.state.newMoviePoster
-    //   })
-    // })
+    fetch('https://g4-12-6-18g.herokuapp.com/data', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: this.state.newMovieTitle,
+        director: this.state.newMovieDirector,
+        year: this.state.newMovieYear,
+        rating: this.state.newMovieRating,
+        poster_url: this.state.newMoviePoster
+      })
+    })
+    this.setState({
+      newMovieTitle: "",
+      newMovieDirector: "",
+      newMovieYear: "",
+      newMovieRating: "",
+      newMoviePoster: ""
+    })
   }
   deleteMovie(){
     fetch('https://g4-12-6-18g.herokuapp.com/data/'+this.state.favorite, {
